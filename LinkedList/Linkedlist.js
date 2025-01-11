@@ -107,3 +107,46 @@ LinkedList.prototype.deleteBykey=function(key){
 
     console.log("No node found with given data")
 }
+
+
+//Searching the element
+LinkedList.prototype.searchElement=function(key){
+    let currentValue=this.head;
+    while(currentValue){
+        if(currentValue.data===key){
+            console.log("Data Found")
+            return true
+        }
+       
+    }
+    console.log("Data Not Found");
+    return false;
+}
+
+//Tarversal List
+LinkedList.prototype.traversalList=function(){
+    let currentValue=this.head;
+    let list=[]
+    while(currentValue){
+        list.push(currentValue.data) //adding data in node
+        currentValue=currentValue.next //Move to next node
+    }
+    console.log(list.join("->"));
+   
+}
+
+// reverse a linked list
+
+LinkedList.prototype.reverse = function(){
+    let current = this.head
+    let prev = null
+    let next = null
+  
+    while(current){
+      next = current.next
+      current.next = prev
+      prev = current
+      current = next
+    }
+    this.head = prev
+  }
