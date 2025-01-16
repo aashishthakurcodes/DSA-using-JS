@@ -105,3 +105,70 @@ BinarySearchTree.prototype.findMinNode = function (node) {
   return node;
 };
 
+
+
+
+// Adding inorder traversal to the prototype
+BinarySearchTree.prototype.inorderTraversal = function () {
+  const result = [];
+  this.inorder(this.root, result);
+  return result;
+};
+
+BinarySearchTree.prototype.inorder = function (node, result) {
+  if (node !== null) {
+    this.inorder(node.left, result);
+    result.push(node.key);
+    this.inorder(node.right, result);
+  }
+};
+
+// Adding pre-order traversal to the prototype
+BinarySearchTree.prototype.preOrderTraversal = function () {
+  const result = [];
+  this.preOrder(this.root, result);
+  return result;
+};
+
+BinarySearchTree.prototype.preOrder = function (node, result) {
+  if (node !== null) {
+    result.push(node.key);
+    this.preOrder(node.left, result);
+    this.preOrder(node.right, result);
+  }
+};
+
+// Adding post-order traversal to the prototype
+BinarySearchTree.prototype.postOrderTraversal = function () {
+  const result = [];
+  this.postOrder(this.root, result);
+  return result;
+};
+
+BinarySearchTree.prototype.postOrder = function (node, result) {
+  if (node !== null) {
+    this.postOrder(node.left, result);
+    this.postOrder(node.right, result);
+    result.push(node.key);
+  }
+};
+
+// Example usage:
+const bsttraversal = new BinarySearchTree();
+bsttraversal.insert(10);
+bsttraversal.insert(5);
+bsttraversal.insert(15);
+bsttraversal.insert(3);
+bsttraversal.insert(7);
+bsttraversal.insert(12);
+bsttraversal.insert(18);
+
+console.log("In-order Traversal:", bsttraversal.inorderTraversal()); // In-order	Left → Root → Right	
+console.log("Pre-order Traversal:", bsttraversal.preOrderTraversal());//  Pre-order	Root → Left →Right
+console.log("Post-order Traversal:", bsttraversal.postOrderTraversal()); // Post-order	Left → Right → Root
+
+
+
+// In-order	Left → Root → Right	
+// Pre-order	Root → Left →Right
+// Post-order	Left → Right → Root
